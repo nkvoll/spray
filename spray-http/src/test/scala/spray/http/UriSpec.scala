@@ -188,6 +188,8 @@ class UriSpec extends Specification {
       Query("a=") === ("a", "") +: Empty
       Query("=a") === ("", "a") +: Empty
       Query("a&") === ("a", "") +: ("", "") +: Empty
+      Query(Map("a" -> "b")) === ("a", "b") +: Empty
+      Query(Map[String, String]()) === Empty
     }
     "properly support the retrieval interface" in {
       val query = Query("a=1&b=2&c=3&b=4&b")

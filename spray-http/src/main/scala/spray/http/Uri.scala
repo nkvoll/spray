@@ -408,7 +408,7 @@ object Uri {
     }
     def apply(list: List[(String, String)]): Query = {
       @tailrec def queryFrom(l: List[(String, String)], query: Query = Query.Empty): Query =
-        if (l.isEmpty) query else queryFrom(l.tail, Cons(query.key, query.value, query))
+        if (l.isEmpty) query else queryFrom(l.tail, Cons(l.head._1, l.head._2, query))
       queryFrom(list)
     }
     def apply(map: Map[String, String]): Query = apply(map.toList)
